@@ -108,3 +108,19 @@ class Client(object):
 		bbox.split(',')
 
 		return self._get('data/2.5/box/city?=' + bbox + '&cluster=' + cluster)
+
+	def getWeatherCycle(self, lat, lon, cluster='no', cnt):
+		"""
+		Function to get weather from cities laid within definite circle that is specified by center point ('lat', 'lon') and expected number of cities ('cnt') around this point
+
+		:param lat: latitude of the center point
+		:param lon: longitude of the center point
+		:param cluster: use server clustering of points (yes, no) (default: no)
+		:param cnt: expected number of cities laid within circle
+
+		:return: weather of cities in the circle
+		"""
+		#http://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10
+		return self._get('data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt)
+
+	
