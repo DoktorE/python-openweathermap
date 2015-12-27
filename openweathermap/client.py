@@ -71,8 +71,11 @@ class Client(object):
 		"""
 		Function to get the weather based on a zip code
 
-		:param query: query to pass into the request
+		:param zip_code: zip code to pass into the request
+		:param country_code: two letter code (ex: 'us') to pass into the request
 		:param appid: api key to pass into the request
+
+		:return: weather from request
 		"""
 
 		return self._get('/data/2.5/weather?zip=' + zip_code + ',' + country_code, + '&appid=' + appid)
