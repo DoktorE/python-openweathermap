@@ -34,11 +34,11 @@ class Client(object):
 
 		if len(request.text) == 0:
 			data = json.loads('{}')
-        else:
-		    try:
-		        data = json.loads(request.text)
-		    except ValueError:
-		        data = request.text
+		else:
+			try:
+				data = json.loads(request.text)
+			except ValueError:
+				data = request.text
 
 		return data
 
@@ -66,3 +66,13 @@ class Client(object):
 		"""
 
 		return self.request(endpoint, 'post', data, **kwargs)
+
+	def getWeatherZip(self, zip_code, country_code, appid=''):
+		"""
+		Function to get the weather based on a zip code
+
+		:param query: query to pass into the request
+		:param appid: api key to pass into the request
+		"""
+
+		return self._get('/data/2.5/weather?zip=' + zip_code + ',' + country_code, + '&appid=' + appid)
