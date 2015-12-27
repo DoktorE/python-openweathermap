@@ -4,12 +4,13 @@ import requests
 class Client(object):
 	""" Main class to preform and interact with the API """
 
-	def __init__(self, url):
+	def __init__(self, url, appid):
 		if not url.endswith('/'):
 			url += '/'
 		self.url = url
+		self.appid = appid
 
-	def _request(self, endpoint, method, appid='', data=None, **kwargs):
+	def _request(self, endpoint, method, data=None, **kwargs):
 		"""
 		Function to handle GET and POST requests
 
@@ -21,24 +22,22 @@ class Client(object):
 
 		:return: request response
 		"""
-		total_url = self.url + endpoint + '&appid=' + appid
-
-		r = self.session
+		total_url = self.url + endpoint + '&appid=' + self.appid
 
 		if method == 'get':
-			request = r.get(total_url, **kwargs)
+			r = requests.get(total_url, **kwargs)
 		else:
-			request = r.post(total_url, data, **kwargs)
+			r = requests.post(total_url, data, **kwargs)
 
-		request.raise_for_status()
+		r.raise_for_status()
 
-		if len(request.text) == 0:
+		if len(r.text) == 0:
 			data = json.loads('{}')
 		else:
 			try:
-				data = json.loads(request.text)
+				data = json.loads(r.text)
 			except ValueError:
-				data = request.text
+				data = r.text
 
 		return data
 
@@ -105,11 +104,10 @@ class Client(object):
 
 		:return: weather of cities in the bounding box
 		"""
-		bbox.split(',')
-
+		bbox = ",".join(bbox)
 		return self._get('data/2.5/box/city?=' + bbox + '&cluster=' + cluster)
 
-	def getWeatherCycle(self, lat, lon, cluster='no', cnt):
+	def getWeatherCycle(self, lat, lon, cnt, cluster='no'):
 		"""
 		Function to get weather from cities laid within definite circle that is specified by center point ('lat', 'lon') and expected number of cities ('cnt') around this point
 
@@ -123,4 +121,16 @@ class Client(object):
 		#http://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10
 		return self._get('data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt)
 
-	
+	def getCityGroup(self, city_ids=""):
+		"""
+		Function to get the weather from multiple city IDs
+
+		:param city_ids: array of city ids
+
+		:return: weather for each of the city IDs
+		"""
+		city_ids = ','.join(str(i) for i in city_ids)
+
+		print(city_ids)
+
+		return self._get('data/2.5/group?id=')
