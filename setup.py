@@ -17,7 +17,7 @@ setup(
     name='python-openweathermap',
     description='API Wrapper for OpenWeatherMap written in Python',
     version=__version__,
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     license='Nada',
     platforms=['OS Independent'],
     keywords='wrapper, api, wx, weather, openweathermap',

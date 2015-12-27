@@ -85,7 +85,7 @@ class Client(object):
 		"""
 		return self._get('data/2.5/weather?id=', city_id);
 
-	def getWeatherZip(self, zip_code, country_code):
+	def getWeatherZip(self, zip_code, country_code=None):
 		"""
 		Function to get the weather based on a zip code
 
@@ -95,3 +95,16 @@ class Client(object):
 		:return: weather from request
 		"""
 		return self._get('/data/2.5/weather?zip=' + zip_code + ',' + country_code)
+
+	def getWeatherRec(self, bbox, cluster='no'):
+		"""
+		Function to get the weather for multiple cities in a rectangular area
+
+		:param bbox: array of 5 numbers to describe the bounding box (lat of the top left point, lon of the top left point, lat of the bottom right point, lon of the bottom right point, map zoom)
+		:param cluster: use server clustering of points (yes, no) (default: no)
+
+		:return: weather of cities in the bounding box
+		"""
+		bbox.split(',')
+
+		return self._get('data/2.5/box/city?=' + bbox + '&cluster=' + cluster)
