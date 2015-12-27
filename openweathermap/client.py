@@ -64,7 +64,7 @@ class Client(object):
 		"""
 		return self.request(endpoint, 'post', data, **kwargs)
 
-	def getWeatherCity(self, city_name, country_code=None):
+	def getWeatherCity(self, city_name, country_code=''):
 		"""
 		Function to get the weather based on the name of a city
 
@@ -73,7 +73,7 @@ class Client(object):
 
 		:return: weather from request
 		"""
-		return self._get('data/2.5/weather?q=', city_name + ',' + country_code)
+		return self._get('data/2.5/weather?q=' + city_name + ',' + country_code)
 
 	def getWeatherCityId(self, city_id):
 		"""
@@ -82,9 +82,9 @@ class Client(object):
 		:param city_id: city id of city
 		:return: weather from request
 		"""
-		return self._get('data/2.5/weather?id=', city_id);
+		return self._get('data/2.5/weather?id=' + str(city_id))
 
-	def getWeatherZip(self, zip_code, country_code=None):
+	def getWeatherZip(self, zip_code, country_code=''):
 		"""
 		Function to get the weather based on a zip code
 
@@ -93,35 +93,46 @@ class Client(object):
 
 		:return: weather from request
 		"""
-		return self._get('/data/2.5/weather?zip=' + zip_code + ',' + country_code)
+		if not country_code == '':
+			country_code = ',' + country_code
 
-	def getWeatherRec(self, bbox, cluster='no'):
+		return self._get('data/2.5/weather?zip=' + str(zip_code) + country_code)
+
+	def getWeatherCoord(self, lat, lon):
+		"""
+		Function to get the weather based on geographic coordinates
+
+		:param lat: latitudinal coordinate
+		:param lon: longitudinal coordinate
+
+		:return: weather from request
+		"""
+		return self._get('data/2.5/weather?lat=' + str(lat) + '&lon=' + str(lon))
+
+	def getWeatherRec(self, bbox):
 		"""
 		Function to get the weather for multiple cities in a rectangular area
 
 		:param bbox: array of 5 numbers to describe the bounding box (lat of the top left point, lon of the top left point, lat of the bottom right point, lon of the bottom right point, map zoom)
-		:param cluster: use server clustering of points (yes, no) (default: no)
 
 		:return: weather of cities in the bounding box
 		"""
-		bbox = ",".join(bbox)
-		return self._get('data/2.5/box/city?=' + bbox + '&cluster=' + cluster)
+		bbox = ",".join(str(i) for i in bbox)
+		return self._get('data/2.5/box/city?bbox=' + bbox + '&cluster=yes')
 
-	def getWeatherCycle(self, lat, lon, cnt, cluster='no'):
+	def getWeatherCycle(self, lat, lon, cnt):
 		"""
 		Function to get weather from cities laid within definite circle that is specified by center point ('lat', 'lon') and expected number of cities ('cnt') around this point
 
 		:param lat: latitude of the center point
 		:param lon: longitude of the center point
-		:param cluster: use server clustering of points (yes, no) (default: no)
 		:param cnt: expected number of cities laid within circle
 
 		:return: weather of cities in the circle
 		"""
-		#http://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10
-		return self._get('data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt)
+		return self._get('data/2.5/find?lat=' + str(lat) + '&lon=' + str(lon) + '&cnt=' + str(cnt))
 
-	def getCityGroup(self, city_ids=""):
+	def getCityGroup(self, city_ids):
 		"""
 		Function to get the weather from multiple city IDs
 
@@ -129,8 +140,7 @@ class Client(object):
 
 		:return: weather for each of the city IDs
 		"""
-		city_ids = ','.join(str(i) for i in city_ids)
-
+		city_ids = ",".join(city_ids)
 		print(city_ids)
 
-		return self._get('data/2.5/group?id=')
+		return self._get('data/2.5/group?id=' + city_ids)
