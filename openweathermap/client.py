@@ -4,8 +4,9 @@ import requests
 class Client(object):
 	""" Main class to preform and interact with the API """
 
-	def __init__(self, appid):
+	def __init__(self, appid, metric):
 		self.appid = appid
+		self.metric = metric
 
 	def _request(self, endpoint, method, data=None, **kwargs):
 		"""
@@ -19,8 +20,10 @@ class Client(object):
 
 		:return: request response
 		"""
-
-		total_url = "api.openweathermap.com/" + endpoint + '&appid=' + self.appid
+		total_url = 'http://api.openweathermap.org/' + endpoint + '&appid=' + self.appid
+		
+		if self.metric == True:
+			total_url += "&units=metric"
 
 		if method == 'get':
 			r = requests.get(total_url, **kwargs)
@@ -62,7 +65,7 @@ class Client(object):
 		"""
 		return self.request(endpoint, 'post', data, **kwargs)
 
-	def getWeatherCity(self, city_name, country_code=''):
+	def getWeatherCity(self, city_name, country_code):
 		"""
 		Function to get the weather based on the name of a city
 
@@ -82,7 +85,7 @@ class Client(object):
 		"""
 		return self._get('data/2.5/weather?id=' + str(city_id))
 
-	def getWeatherZip(self, zip_code, country_code=''):
+	def getWeatherZip(self, zip_code, country_code):
 		"""
 		Function to get the weather based on a zip code
 
