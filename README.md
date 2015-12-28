@@ -18,7 +18,7 @@ from openweathermap import Client
 ```
 Make sure you have your API key
 ```python
-client = Client('2de143494c0b295cca9337e1e96b00e0')
+client = Client('2de143494c0b295cca9337e1e96b00e0', False)
 
 data = client.getWeatherZip(12702, 'us')
 print(data)
