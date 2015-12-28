@@ -4,10 +4,7 @@ import requests
 class Client(object):
 	""" Main class to preform and interact with the API """
 
-	def __init__(self, url, appid):
-		if not url.endswith('/'):
-			url += '/'
-		self.url = url
+	def __init__(self, appid):
 		self.appid = appid
 
 	def _request(self, endpoint, method, data=None, **kwargs):
@@ -22,7 +19,8 @@ class Client(object):
 
 		:return: request response
 		"""
-		total_url = self.url + endpoint + '&appid=' + self.appid
+
+		total_url = "api.openweathermap.com/" + endpoint + '&appid=' + self.appid
 
 		if method == 'get':
 			r = requests.get(total_url, **kwargs)
