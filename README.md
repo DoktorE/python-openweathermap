@@ -32,21 +32,22 @@ print(data)
 ```python
 getWeatherCity('Dallas', 'us') # returns weather for Dallas, TX
 ```
+Gets weather by city name
 **Parameters:**
-  * Name: Name of city to grab weather from
-  * Country code: two letter code (us, ru, etc.) to specify country
+  * **city_name**: Name of city to grab weather from
+  * **country_code**: two letter code (us, ru, etc.) to specify country
 
 **Return:**
   JSON response for city
 
 ##Getting weather by city ID
-
-Refer to openweathermap.com for the complete list of city IDs
 ```python
   getWeatherCityId('2172797') 
 ```
+Gets weather by city ID
+Refer to openweathermap.com for the complete list of city IDs
 **Parameters:**
-  * City ID: ID of city to grab weather from
+  * **city_id**: ID of city to grab weather from
 
 **Return:**
   JSON response for the city
@@ -54,9 +55,10 @@ Refer to openweathermap.com for the complete list of city IDs
 ```python
   getWeatherCoord(55.5, 72.5)
 ```
+Gets weather by geographical coordinates
 **Parameters:**
-  * lat: latitudinal coordinate
-  * lon: longitudinal coordinate
+  * **lat**: latitudinal coordinate
+  * **lon**: longitudinal coordinate
 
 **Return:**
   JSON response for the area described by the geographical coordinates
@@ -65,8 +67,9 @@ Refer to openweathermap.com for the complete list of city IDs
 ```python
   getWeatherRec([55, 65, 75, 85, 11)
 ```
+Gets weather of cities inside the bounding box
 **Parameters:**
-  * bbox: array of 5 numbers to describe the bounding box (lat of the top left point, lon of the top left point, lat of the bottom right point, lon of the bottom right point, map zoom)
+  * **bbox**: array of 5 numbers to describe the bounding box (lat of the top left point, lon of the top left point, lat of the bottom right point, lon of the bottom right point, map zoom)
 
 **Return:**
   JSON response for the cities inside of the bounding box
@@ -77,9 +80,10 @@ Refer to openweathermap.com for the complete list of city IDs
 ```
 Gets weather from cities laid within definite circle that is specified by a center point ('lat', 'lon') and expected number of cities ('cnt') around the point
 **Parameters:**
-  * lat: latitudinal coordinate for center point of circle
-  * lon: longitudinal coordinate for center point of circle
-  * cnt: expected number of cities around circle
+  * **lat**: latitudinal coordinate for center point of circle
+  * **lon**: longitudinal coordinate for center point of circle
+  * **cnt**: expected number of cities around circle
+
 **Return:**
   Number of expected cities inside circle
 
@@ -87,7 +91,9 @@ Gets weather from cities laid within definite circle that is specified by a cent
 ```python
   getWeatherGroup([48549386, 1759265, 2859584, 2859573])
 ```
+Gets weather of multiple city IDs
 **Parameters:**
-  * city_ids: array of city IDs 
+  * **city_ids**: array of city IDs 
+
 **Return:**
   Weather for each city ID specified in array 
