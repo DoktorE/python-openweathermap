@@ -46,6 +46,7 @@ Gets weather by city name
   getWeatherCityId('2172797') 
 ```
 Gets weather by city ID
+
 Refer to openweathermap.com for the complete list of city IDs
 
 **Parameters:**
