@@ -1,0 +1,8 @@
+setup.py
+openweathermap/__init__.py
+openweathermap/client.py
+python_openweathermap.egg-info/PKG-INFO
+python_openweathermap.egg-info/SOURCES.txt
+python_openweathermap.egg-info/dependency_links.txt
+python_openweathermap.egg-info/requires.txt
+python_openweathermap.egg-info/top_level.txt
