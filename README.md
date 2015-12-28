@@ -1,6 +1,5 @@
-# python-openweathermap
-Api wrapper for OpenWeatherMap
+# Python-OpenWeatherMap
+Python API wrapper for OpenWeatherMap
 
-I truly have no idea what I'm doing and I'm currently copy pasting code from other repositories
-
-:D
+How to use:
+`from openweathermap import client`

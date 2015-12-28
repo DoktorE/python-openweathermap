@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: python-openweathermap
+Version: 0.1.2
+Summary: API Wrapper for OpenWeatherMap written in Python
+Home-page: https://github.com/doktore/python-openweathermap
+Author: Doktor
+Author-email: UNKNOWN
+License: Nada
+Description: # Python-OpenWeatherMap
+        Python API wrapper for OpenWeatherMap
+        
+        How to use:
+        `from openweathermap import client`
+Keywords: wrapper,api,wx,weather,openweathermap
+Platform: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Environment :: Console

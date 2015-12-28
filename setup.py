@@ -1,10 +1,9 @@
 import os
 from setuptools import setup, find_packages
 
+__version__ = '0.1.2'
+
 install_requires = open('requirements.txt').read().splitlines()
-
-__version__ = '0.0.1'
-
 
 def read(fname):
     try:
