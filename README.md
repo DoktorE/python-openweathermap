@@ -1,6 +1,7 @@
 Python API wrapper for OpenWeatherMap
 
-#How to install
+##How to install
+
 ```
 git clone https://github.com/DoktorE/python-openweathermap
 ```
@@ -8,7 +9,8 @@ git clone https://github.com/DoktorE/python-openweathermap
 python setup.py install
 ```
 
-#How to use
+##How to use
+
 ```python
 from openweathermap import Client
 ```
@@ -22,8 +24,9 @@ print(data)
 ```
 
 #API Method Guide
--
-#Getting weather by city name
+
+##Getting weather by city name
+=======
 ```python
 getWeatherCity('Dallas', 'us') # returns weather for Dallas, TX
 ```
@@ -34,7 +37,8 @@ getWeatherCity('Dallas', 'us') # returns weather for Dallas, TX
 **Return:**
   JSON response for city
   
-#Getting weather by city ID
+##Getting weather by city ID
+
 Refer to openweathermap.com for the complete list of city IDs
 ```python
   getWeatherCityId('2172797') 
