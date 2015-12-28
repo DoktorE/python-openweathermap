@@ -33,6 +33,7 @@ print(data)
 getWeatherCity('Dallas', 'us') # returns weather for Dallas, TX
 ```
 Gets weather by city name
+
 **Parameters:**
   * **city_name**: Name of city to grab weather from
   * **country_code**: two letter code (us, ru, etc.) to specify country
@@ -46,6 +47,7 @@ Gets weather by city name
 ```
 Gets weather by city ID
 Refer to openweathermap.com for the complete list of city IDs
+
 **Parameters:**
   * **city_id**: ID of city to grab weather from
 
@@ -56,6 +58,7 @@ Refer to openweathermap.com for the complete list of city IDs
   getWeatherCoord(55.5, 72.5)
 ```
 Gets weather by geographical coordinates
+
 **Parameters:**
   * **lat**: latitudinal coordinate
   * **lon**: longitudinal coordinate
@@ -68,6 +71,7 @@ Gets weather by geographical coordinates
   getWeatherRec([55, 65, 75, 85, 11)
 ```
 Gets weather of cities inside the bounding box
+
 **Parameters:**
   * **bbox**: array of 5 numbers to describe the bounding box (lat of the top left point, lon of the top left point, lat of the bottom right point, lon of the bottom right point, map zoom)
 
@@ -79,6 +83,7 @@ Gets weather of cities inside the bounding box
   getWeatherCycle(55.5, 75.2, 10)
 ```
 Gets weather from cities laid within definite circle that is specified by a center point ('lat', 'lon') and expected number of cities ('cnt') around the point
+
 **Parameters:**
   * **lat**: latitudinal coordinate for center point of circle
   * **lon**: longitudinal coordinate for center point of circle
@@ -92,6 +97,7 @@ Gets weather from cities laid within definite circle that is specified by a cent
   getWeatherGroup([48549386, 1759265, 2859584, 2859573])
 ```
 Gets weather of multiple city IDs
+
 **Parameters:**
   * **city_ids**: array of city IDs 
 
