@@ -4,9 +4,9 @@ import requests
 class Client(object):
 	""" Main class to preform and interact with the API """
 
-	def __init__(self, appid, metric):
+	def __init__(self, appid, units='default'):
 		self.appid = appid
-		self.metric = metric
+		self.units = units
 
 	def _request(self, endpoint, method, data=None, **kwargs):
 		"""
@@ -21,9 +21,13 @@ class Client(object):
 		:return: request response
 		"""
 		total_url = 'http://api.openweathermap.org/' + endpoint + '&appid=' + self.appid
-		
-		if self.metric == True:
-			total_url += "&units=metric"
+
+		# set unit type for return
+		if self.units == 'metric':
+			total_url += '&units=metric'
+
+		if self.units == 'imperial':
+			total_url += '&units=imperial'
 
 		if method == 'get':
 			r = requests.get(total_url, **kwargs)
