@@ -17,6 +17,8 @@ python setup.py install
 from openweathermap import Client
 ```
 Make sure you have your API key
+
+To use metric units, switch the second parameter to True or change client.metric to True
 ```python
 client = Client('2de143494c0b295cca9337e1e96b00e0', False)
 
