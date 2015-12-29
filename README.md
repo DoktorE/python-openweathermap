@@ -20,7 +20,7 @@ Make sure you have your API key
 
 To use different units, add 'imperial' or 'metric' to the second parameter when initializing. You can also switch the unit return type by accessing `client.units`.
 ```python
-client = Client('2de143494c0b295cca9337e1e96b00e0', False)
+client = Client('2de143494c0b295cca9337e1e96b00e0')
 
 data = client.getWeatherZip(12702, 'us')
 print(data)
