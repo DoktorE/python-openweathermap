@@ -149,3 +149,49 @@ class Client(object):
 		print(city_ids)
 
 		return self._get('data/2.5/group?id=' + city_ids)
+
+class WeatherConverter(object):
+	""" Class to convert the weather from OpenWeatherMaps' native unit """
+
+	def convertToMetric(self, data):
+		"""
+		Function to convert JSON to metric
+
+		:param data: JSON to convert
+
+		:return: converted JSON string
+		"""		
+		# load the dumped data into a json string so we can index it
+		parsed_json = json.loads(json.dumps(data))
+
+		# temperature
+		parsed_json['main']['temp'] -= 273.5
+		parsed_json['main']['temp_min'] -= 273.5
+		parsed_json['main']['temp_max'] -= 273.5
+
+		# wind
+		parsed_json['wind']['speed'] *= 3.6
+
+		return parsed_json
+
+	def convertToImperial(self, data):
+		"""
+		Function to convert JSON to imperial
+
+		:param data: JSON to convert
+
+		:return: converted JSON string
+		"""
+		# load the dumped data into a json string so we can index it
+		parsed_json = json.loads(json.dumps(data))
+
+		# temperature
+		parsed_json['main']['temp'] *= (9/5) - 459.67
+		parsed_json['main']['temp_min'] *= (9/5) - 459.67
+		parsed_json['main']['temp_max'] *= (9/5) - 459.67
+
+		# speed
+		parsed_json['wind']['speed'] *= 2.2369
+
+		return parsed_json
+		
