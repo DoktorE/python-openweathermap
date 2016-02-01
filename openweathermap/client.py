@@ -26,7 +26,7 @@ class Client(object):
 		if not self.units == 'metric' or self.units == 'imperial' or self.units == 'default':
 			print("Invalid unit specified. Valid units:\n'imperial'\n'metric'")
 		else:
-			total_url += self.units
+			total_url += "&units=" + self.units
 
 		if method == 'get':
 			r = requests.get(total_url, **kwargs)
