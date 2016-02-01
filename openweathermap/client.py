@@ -23,11 +23,10 @@ class Client(object):
 		total_url = 'http://api.openweathermap.org/' + endpoint + '&appid=' + self.appid
 
 		# set unit type for return
-		if self.units == 'metric':
-			total_url += '&units=metric'
-
-		if self.units == 'imperial':
-			total_url += '&units=imperial'
+		if not self.units == 'metric' or self.units == 'imperial' or self.units == 'default':
+			print("Invalid unit specified. Valid units:\n'imperial'\n'metric'")
+		else:
+			total_url += self.units
 
 		if method == 'get':
 			r = requests.get(total_url, **kwargs)
